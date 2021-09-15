@@ -69,21 +69,20 @@ function readData(entries) {
     // Companies grouped both on registered year and pba entry
     if (principal != "NA" && year >= 2000 && year <= 2019) {
       // If year is not present in object then add year along with pba and count
-      if (year in companyGrouped === false){
+      if (year in companyGrouped === false) {
         companyGrouped[year] = {};
         companyGrouped[year][principal] = 1;
         // console.log(principal in companyGrouped[year]);
-    }
+      }
       // If year is already present then check for pba and add value
       else {
-        if (principal in companyGrouped[year] === false){
+        if (principal in companyGrouped[year] === false) {
           companyGrouped[year][principal] = 1;
-        }
-        else companyGrouped[year][principal] += 1;
+        } else companyGrouped[year][principal] += 1;
       }
     }
   }
-  console.log(companyGrouped);
+  // console.log(companyGrouped);
   const objectAndFile = [
     authorizedCapital,
     JSON_OUTPUT_FILE_PATH1,
@@ -118,55 +117,4 @@ function save(objectAndFile) {
     });
     index += 1;
   }
-  // // Converting the authorizedCapital object to json
-  // const jsonData1 = {
-  //   authorizedCapital: authorizedCapital,
-  // };
-  // jsonString = JSON.stringify(jsonData1);
-
-  // // Writing the stringified object to json file
-  // fs.writeFile(JSON_OUTPUT_FILE_PATH1, jsonString, "utf-8", (err) => {
-  //   if (err) {
-  //     console.log(err);
-  //   }
-  // });
-
-  // // Converting the registeredYears object to json
-  // const jsonData2 = {
-  //   registeredYears: registeredYears,
-  // };
-  // jsonString = JSON.stringify(jsonData2);
-
-  // // Writing the stringified object to json file
-  // fs.writeFile(JSON_OUTPUT_FILE_PATH2, jsonString, "utf-8", (err) => {
-  //   if (err) {
-  //     console.log(err);
-  //   }
-  // });
-
-  // // Converting the principalActivity object to json
-  // const jsonData3 = {
-  //   principalActivity: principalActivity,
-  // };
-  // jsonString = JSON.stringify(jsonData3);
-
-  // // Writing the stringified object to json file
-  // fs.writeFile(JSON_OUTPUT_FILE_PATH3, jsonString, "utf-8", (err) => {
-  //   if (err) {
-  //     console.log(err);
-  //   }
-  // });
-
-  // // Converting the companyGrouped object to json
-  // const jsonData4 = {
-  //   companyGrouped: companyGrouped,
-  // };
-  // jsonString = JSON.stringify(jsonData4);
-
-  // // Writing the stringified object to json file
-  // fs.writeFile(JSON_OUTPUT_FILE_PATH4, jsonString, "utf-8", (err) => {
-  //   if (err) {
-  //     console.log(err);
-  //   }
-  // });
 }

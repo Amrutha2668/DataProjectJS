@@ -36,8 +36,10 @@ function readData(entries) {
 
   // Looping through entries and fetching the required data fields.
   for (let index = 0; index < entries.length; index++) {
+
     // Authorized capital entry
     let capital = parseFloat(entries[index].AUTHORIZED_CAP);
+
     // Adding entries to object upon checking condition
     if (capital <= 100000) authorizedCapital["<=1L"]++;
     else if (capital >= 100000 && capital <= 1000000)
@@ -57,11 +59,13 @@ function readData(entries) {
         ? "20" + year.slice(-2)
         : "19" + year.slice(-2)
     );
+
     // Adding entries to Registered year object
     if (year >= 2000 && year <= 2019) registeredYears[year]++;
 
     // Principal business activity in 2015's entry
     let principal = entries[index].PRINCIPAL_BUSINESS_ACTIVITY_AS_PER_CIN;
+
     //Adding entries to principalActivity object
     if (principal in principalActivity) principalActivity[principal] += 1;
     else principalActivity[principal] = 1;
@@ -82,7 +86,10 @@ function readData(entries) {
       }
     }
   }
+
   // console.log(companyGrouped);
+
+  // Storing objects and json file path in a array, since json object conversion statements are repetitive.
   const objectAndFile = [
     authorizedCapital,
     JSON_OUTPUT_FILE_PATH1,

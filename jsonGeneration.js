@@ -69,18 +69,21 @@ function readData(entries) {
     // Companies grouped both on registered year and pba entry
     if (principal != "NA" && year >= 2000 && year <= 2019) {
       // If year is not present in object then add year along with pba and count
-      if (year in companyGrouped === false)
-        companyGrouped[year] = { [principal]: 1 };
+      if (year in companyGrouped === false){
+        companyGrouped[year] = {};
+        companyGrouped[year][principal] = 1;
+        // console.log(principal in companyGrouped[year]);
+    }
       // If year is already present then check for pba and add value
       else {
-        if (companyGrouped[year][principal] in companyGrouped === false)
+        if (principal in companyGrouped[year] === false){
           companyGrouped[year][principal] = 1;
+        }
         else companyGrouped[year][principal] += 1;
       }
-
-      companyGrouped[year][principal] += 1;
     }
   }
+  console.log(companyGrouped);
   const objectAndFile = [
     authorizedCapital,
     JSON_OUTPUT_FILE_PATH1,
